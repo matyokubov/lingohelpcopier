@@ -25,7 +25,7 @@ def getlinksjson():
     letters = 'qwertyuiopasdfghjklzxcvbnm'
     for mode in modes:
         r = {}
-        print(f"'{mode}' is copying")
+        print(f"'{mode}' is copying...")
         for l in letters:
             r[l] = getlinks(mode, l)
         with open(f"{mode}.json", "w") as outfile: 
