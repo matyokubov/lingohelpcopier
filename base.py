@@ -32,7 +32,7 @@ def getlinksjson():
             json.dump(r, outfile)
         r = {}
 getlinksjson()
-print("completed copying links")
+print("Completed copying links")
 
 for mode in modes:
     json = json.load(open(f'{mode}.json'))
