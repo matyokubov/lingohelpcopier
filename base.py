@@ -4,7 +4,7 @@ import re
 import json
 import os
 
-modes = ["preposition-after-verb", "preposition-after-adjective"]
+modes = ["preposition-before-noun", "preposition-after-verb", "preposition-after-adjective"]
 
 def getlinksjson():
     def getlinks(mode, letter):
@@ -19,13 +19,13 @@ def getlinksjson():
         for a_elem in tags: links.append(a_elem['href'])
         res = {}
         for link in links:
-            res[link.split('/')[2].split('-')[0] if link.split('/')[1]!="preposition-before-noun" else link.split('/')[2]] = 'lingohelp.me'+link
+            res[link.split('/')[2].split('-')[0] if link.split('/')[1]!="preposition-before-noun" else link.split('/')[2].split('-')[-1]] = 'lingohelp.me'+link
         return(res)
 
     letters = 'qwertyuiopasdfghjklzxcvbnm'
     for mode in modes:
         r = {}
-        print(f"'{mode}' is copying...")
+        print(f"'{mode}' is copying")
         for l in letters:
             r[l] = getlinks(mode, l)
         with open(f"{mode}.json", "w") as outfile: 
