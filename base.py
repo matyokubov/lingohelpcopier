@@ -35,12 +35,12 @@ getlinksjson()
 print("Completed copying links")
 
 for mode in modes:
-    json = json.load(open(f'{mode}.json'))
+    json_ = json.load(open(f'{mode}.json'))
     dirpath = mode.split('-')[-1]
     os.mkdir(dirpath)
     print(f"Copying HTMLs from {mode}")
-    for links_with_letter in json:
-        for name, link in json[links_with_letter].items():
+    for links_with_letter in json_:
+        for name, link in json_[links_with_letter].items():
             with open(f"{dirpath}/{name}.html", "w") as html:
                 htmltext = get('https://'+link).text
                 html.write(htmltext)
